@@ -11,13 +11,18 @@ void flushbuffer()
 
 }
 
-
+//ex3_1
 void bufwrite(char *p, int n)
 {
     while (--n >= 0) {
-        if (bufptr == &buffer[N])
+        if (bufptr == &buffer[N-1])
+        {
+            *bufptr = *p;
             flushbuffer();
-        *bufptr++ = *p++;
+        } else    
+            *bufptr++ = *p;
+        if (n > 0)
+            p++;
     }
 }
 
